@@ -1,5 +1,5 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Metrics, ApplicationStyles } from '../../Themes/';
+import { Metrics, ApplicationStyles } from '../../../Themes';
 
 export default EStyleSheet.create({
   ...ApplicationStyles.screen,

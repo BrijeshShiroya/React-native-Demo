@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, Image, View } from 'react-native';
-import Images from '../Assets/Images';
+import Images from '../../Assets/Images';
 
 // Styles
-import styles from './Styles/LaunchScreenStyles';
+import styles from './Styles/HomeDashboardStyles';
 
-export default class LaunchScreen extends Component {
+export default class HomeDashboard extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>

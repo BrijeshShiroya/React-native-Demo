@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import '../Config';
 import DebugConfig from '../Config/DebugConfig';
-import RootContainer from './RootContainer';
+import RootContainer from './Root/RootContainer';
 import createStore from '../Redux';
 
 // create our store
@@ -22,7 +22,7 @@ EStyleSheet.build({ $rem: entireScreenWidth / 380 });
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends Component {
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <RootContainer />
@@ -32,6 +32,4 @@ class App extends Component {
 }
 
 // allow reactotron overlay for fast design in dev mode
-export default DebugConfig.useReactotron
-  ? console.tron.overlay(App)
-  : App;
+export default (DebugConfig.useReactotron ? console.tron.overlay(App) : App);
