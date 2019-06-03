@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, Image, View } from 'react-native';
-import { Images } from '../Themes';
-import { alerts } from 'Constants';
+import Images from '../Assets/Images';
 
 // Styles
 import styles from './Styles/LaunchScreenStyles';
@@ -11,20 +10,18 @@ export default class LaunchScreen extends Component {
     return (
       <View style={styles.mainContainer}>
         <Image
-          source={Images.background}
+          source={Images.BG}
           style={styles.backgroundImage}
           resizeMode="stretch"
         />
         <ScrollView style={styles.container}>
           <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
+            <Image source={Images.LAUNCH_ICON} style={styles.logo} />
           </View>
 
           <View style={styles.section}>
-            <Image source={Images.ready} />
-            <Text style={styles.sectionText}>
-              {alerts.emailValidationError}
-            </Text>
+            <Image source={Images.TOP_LOGO} />
+            <Text style={styles.sectionText}>You are good to go</Text>
           </View>
         </ScrollView>
       </View>
