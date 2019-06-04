@@ -8,12 +8,14 @@ import DebugConfig from '../Config/DebugConfig';
 import { StartupTypes } from '../Redux/StartupRedux';
 import { GithubTypes } from '../Redux/GithubRedux';
 import { VideoTypes } from '../Redux/VideoRedux';
+import { AuthTypes } from '../Redux/AuthRedux';
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas';
 import { getUserAvatar } from './GithubSagas';
 import { getVideoList } from './VideoSagas';
+import { loginUser } from './AuthSagas';
 
 /* ------------- API ------------- */
 
@@ -30,6 +32,7 @@ export default function* root() {
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
-    takeLatest(VideoTypes.VIDEO_LIST_REQUEST, getVideoList, api)
+    takeLatest(VideoTypes.VIDEO_LIST_REQUEST, getVideoList, api),
+    takeLatest(AuthTypes.LOGIN_REQUEST, loginUser, api)
   ]);
 }

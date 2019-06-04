@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, AsyncStorage } from 'react-native';
 import { Provider } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import '../Config';
 import DebugConfig from '../Config/DebugConfig';
 import RootContainer from './Root';
 import createStore from '../Redux';
+import AuthActions from '../Redux/AuthRedux';
 
 // create our store
 const store = createStore();
@@ -22,6 +23,15 @@ EStyleSheet.build({ $rem: entireScreenWidth / 380 });
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends Component {
+  // componentDidMount() {
+  //   AsyncStorage.getItem('@demo:user', (err, result) => {
+  //     if (err) {
+  //       /* eslint-disable-next-line no-console */
+  //     }
+  //     // this.setState({ loading: true }, () => store.dispatch(AuthActions.userLoginSuccess())
+  //   });
+  // }
+
   render() {
     return (
       <Provider store={store}>

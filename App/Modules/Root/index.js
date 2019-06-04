@@ -5,6 +5,7 @@ import ReduxNavigation from '../../Navigation/ReduxNavigation';
 import { connect } from 'react-redux';
 import StartupActions from '../../Redux/StartupRedux';
 import ReduxPersist from '../../Config/ReduxPersist';
+import SplashScreen from 'react-native-splash-screen';
 
 // Styles
 import styles from './style';
@@ -12,6 +13,8 @@ import styles from './style';
 class RootContainer extends Component {
   componentDidMount() {
     console.disableYellowBox = true;
+    SplashScreen.hide();
+
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
       this.props.startup();

@@ -4,13 +4,15 @@ import configureStore from './CreateStore';
 import rootSaga from '../Sagas/';
 import ReduxPersist from '../Config/ReduxPersist';
 import { videoReducer } from '../Redux/VideoRedux';
+import { authReducer } from '../Redux/AuthRedux';
 
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
   nav: require('./NavigationRedux').reducer,
   github: require('./GithubRedux').reducer,
   search: require('./SearchRedux').reducer,
-  video: videoReducer
+  video: videoReducer,
+  auth: authReducer
 });
 
 export default () => {
