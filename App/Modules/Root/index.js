@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, StatusBar } from 'react-native';
-import ReduxNavigation from '../../ReduxNavigation';
+import ReduxNavigation from '../../Navigation/ReduxNavigation';
 import { connect } from 'react-redux';
 import StartupActions from '../../Redux/StartupRedux';
 import ReduxPersist from '../../Config/ReduxPersist';
 
 // Styles
-import styles from './Styles/RootContainerStyles';
+import styles from './style';
 
 class RootContainer extends Component {
   componentDidMount() {
+    console.disableYellowBox = true;
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
       this.props.startup();

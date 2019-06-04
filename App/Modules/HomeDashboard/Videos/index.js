@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text, Image, View, FlatList } from 'react-native';
 import { Container, Header, Title, Body } from 'native-base';
 import { connect } from 'react-redux';
-import VideoActions from '../../Redux/VideoRedux';
+import VideoActions from '../../../Redux/VideoRedux';
 
 // Styles
-import styles from './Styles/VideosStyles';
+import styles from './style';
 
 class Videos extends Component {
   constructor(props) {

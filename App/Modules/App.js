@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import '../Config';
 import DebugConfig from '../Config/DebugConfig';
-import RootContainer from './Root/RootContainer';
+import RootContainer from './Root';
 import createStore from '../Redux';
 
 // create our store

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
 // Styles
-import styles from './Styles/HomeStyles';
+import styles from './style';
 
 export default class Home extends Component {
   render() {

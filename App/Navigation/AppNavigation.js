@@ -4,12 +4,13 @@ import {
   createAppContainer,
   createBottomTabNavigator
 } from 'react-navigation';
-import Login from './Modules/Auth/Login';
-import Home from './Modules/HomeDashboard/Home';
-import Videos from './Modules/HomeDashboard/Videos';
-import Setting from './Modules/HomeDashboard/Setting';
+import { Login, Home, Videos, Setting } from 'Modules';
+// import Login from './Modules/Auth/Login';
+// import Home from './Modules/HomeDashboard/Home';
+// import Videos from './Modules/HomeDashboard/Videos';
+// import Setting from './Modules/HomeDashboard/Setting';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Colors } from './Themes';
+import { Colors } from '../Themes';
 
 const TabIcon = props => (
   <Icon name={props.name} size={20} color={Colors.primary} />

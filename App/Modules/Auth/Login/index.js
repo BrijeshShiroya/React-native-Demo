@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import { TextField } from 'react-native-material-textfield';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import styles from './Styles/LoginStyles';
-import { emailVarification } from '../../Services/UtilityFunctions';
+import styles from './style';
+import { emailVarification } from '../../../Services/UtilityFunctions';
 class Login extends Component {
   constructor(props) {
     super(props);
