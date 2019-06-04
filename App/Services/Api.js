@@ -1,8 +1,10 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce';
 
+const productionUrl = 'https://private-c31a5-task27.apiary-mock.com/';
+
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = productionUrl) => {
   // ------
   // STEP 1
   // ------
@@ -35,8 +37,8 @@ const create = (baseURL = 'https://api.github.com/') => {
   // way at this level.
   //
   const getRoot = () => api.get('');
-  const getRate = () => api.get('rate_limit');
-  const getUser = (username) => api.get('search/users', { q: username });
+  const getVideos = () => api.get('videos');
+  const getUser = username => api.get('search/users', { q: username });
 
   // ------
   // STEP 3
@@ -53,7 +55,7 @@ const create = (baseURL = 'https://api.github.com/') => {
   return {
     // a list of the API functions from step 2
     getRoot,
-    getRate,
+    getVideos,
     getUser
   };
 };
