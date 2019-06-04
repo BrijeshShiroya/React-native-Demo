@@ -11,8 +11,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'Admin@gmail.com',
-      password: '1234567',
+      email: '',
+      password: '',
       loading: false
     };
   }
@@ -53,12 +53,13 @@ class Login extends Component {
       } else {
         if ('password' === name && value.length < 6) {
           errors[name] = 'Too short';
-        } else {
-          this.props.attemptLogin(this.state.email, this.state.password);
         }
       }
     });
     this.setState({ errors });
+    if (Object.keys(errors).length === 0) {
+      this.props.attemptLogin(this.state.email, this.state.password);
+    }
   }
 
   render() {
