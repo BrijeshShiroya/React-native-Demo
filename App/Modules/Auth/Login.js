@@ -11,8 +11,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: ''
+      email: 'test@simform.com',
+      password: '123456'
     };
     this.onFocus = this.onFocus.bind(this);
     this.onSubmitEmail = this.onSubmitEmail.bind(this);
@@ -61,6 +61,8 @@ class Login extends Component {
       } else {
         if ('password' === name && value.length < 6) {
           errors[name] = 'Too short';
+        } else {
+          this.props.navigation.navigate('Dashboard');
         }
       }
     });

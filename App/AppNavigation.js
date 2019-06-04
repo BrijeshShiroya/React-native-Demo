@@ -1,10 +1,31 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {
+  createStackNavigator,
+  createAppContainer,
+  createBottomTabNavigator
+} from 'react-navigation';
 import Login from './Modules/Auth/Login';
+import Home from './Modules/HomeDashboard/Home';
+import Videos from './Modules/HomeDashboard/Videos';
+import Setting from './Modules/HomeDashboard/Setting';
 
-// Manifest of possible screens
-const PrimaryNav = createStackNavigator(
+const Tab = createBottomTabNavigator(
   {
-    Login: { screen: Login }
+    Home: { screen: Home },
+    Videos: { screen: Videos },
+    Setting: { screen: Setting }
+  },
+  {
+    navigationOptions: {
+      gesturesEnabled: false
+    }
+  }
+);
+const Root = createStackNavigator(
+  {
+    Login: {
+      screen: Login
+    },
+    Dashboard: Tab
   },
   {
     // Default config for all screens
@@ -13,4 +34,4 @@ const PrimaryNav = createStackNavigator(
   }
 );
 
-export default createAppContainer(PrimaryNav);
+export default createAppContainer(Root);

@@ -3,9 +3,9 @@ import { ScrollView, Text, Image, View } from 'react-native';
 import Images from '../../Assets/Images';
 
 // Styles
-import styles from './Styles/HomeDashboardStyles';
+import styles from './Styles/SettingStyles';
 
-export default class HomeDashboard extends Component {
+export default class Setting extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
