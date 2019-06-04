@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View } from 'react-native';
-import Images from '../../Assets/Images';
+import { ScrollView, Text, KeyboardAvoidingView } from 'react-native';
+import { connect } from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
+
+// Add Actions - replace 'Your' with whatever your reducer is called :)
+// import YourActions from '../Redux/YourRedux'
 
 // Styles
 import styles from './Styles/LoginStyles';
 
-export default class Login extends Component {
+class Login extends Component {
+  componentDidMount() {
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
+  }
+
   render() {
     return (
-      <View style={styles.mainContainer}>
-        <Image
-          source={Images.BG}
-          style={styles.backgroundImage}
-          resizeMode="stretch"
-        />
-        <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.LAUNCH_ICON} style={styles.logo} />
-          </View>
-
-          <View style={styles.section}>
-            <Image source={Images.TOP_LOGO} />
-            <Text style={styles.sectionText}>You are good to go</Text>
-          </View>
-        </ScrollView>
-      </View>
+      <ScrollView style={styles.container}>
+        <KeyboardAvoidingView behavior="position">
+          <Text>PizzaLocationListScreen</Text>
+        </KeyboardAvoidingView>
+      </ScrollView>
     );
   }
 }
+
+export default connect(
+  null,
+  null
+)(Login);
