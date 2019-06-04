@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text } from 'react-native';
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import { TextField } from 'react-native-material-textfield';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './Styles/LoginStyles';
-
+import { emailVarification } from '../../Services/UtilityFunctions';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -50,10 +51,13 @@ class Login extends Component {
 
   onSubmit() {
     let errors = {};
+    // eslint-disable-next-line complexity
     ['email', 'password'].forEach(name => {
       let value = this[name].value();
       if (!value) {
         errors[name] = 'Should not be empty';
+      } else if ('email' === name && !emailVarification(value)) {
+        errors[name] = 'Invalid email';
       } else {
         if ('password' === name && value.length < 6) {
           errors[name] = 'Too short';
@@ -68,9 +72,14 @@ class Login extends Component {
     let { email, password, errors = {} } = this.state;
 
     return (
-      <ScrollView keyboardShouldPersistTaps="handled">
-        <View style={styles.mainContainer}>
+      <KeyboardAwareScrollView
+        scrollEnabled={false}
+        contentContainerStyle={styles.mainContainerStyle}
+      >
+        <View style={styles.containerStyle}>
+          <Text style={styles.loginTextStyle}>Login</Text>
           <TextField
+            containerStyle={styles.textFieldStyle}
             ref={this.emailRef}
             label="Email"
             value={email}
@@ -81,6 +90,7 @@ class Login extends Component {
           />
           <TextField
             secureTextEntry
+            containerStyle={styles.textFieldStyle}
             ref={this.passwordRef}
             label="Password"
             value={password}
@@ -97,7 +107,7 @@ class Login extends Component {
             <Text style={styles.buttomTextStyle}>Login</Text>
           </Button>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   }
 }
