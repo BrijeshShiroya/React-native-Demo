@@ -20,6 +20,8 @@ class Login extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.user !== prevProps.user) {
       this.props.navigation.navigate('Dashboard');
+    } else if (this.peops.error !== null) {
+      alert(this.peops.error);
     }
   }
 

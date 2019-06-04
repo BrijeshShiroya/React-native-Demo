@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, SafeAreaView } from 'react-native';
 import ReduxNavigation from '../../Navigation/ReduxNavigation';
 import { connect } from 'react-redux';
 import StartupActions from '../../Redux/StartupRedux';
@@ -14,7 +14,6 @@ class RootContainer extends Component {
   componentDidMount() {
     console.disableYellowBox = true;
     SplashScreen.hide();
-
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
       this.props.startup();
@@ -23,7 +22,10 @@ class RootContainer extends Component {
 
   render() {
     return (
-      <View style={styles.applicationView}>
+      <View
+        style={styles.applicationView}
+        forceInset={{ top: 'never', bottom: 'never' }}
+      >
         <StatusBar barStyle="light-content" />
         <ReduxNavigation />
       </View>
