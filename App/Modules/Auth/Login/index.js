@@ -12,16 +12,14 @@ class Login extends Component {
     super(props);
     this.state = {
       email: 'Admin@gmail.com',
-      password: '123456',
+      password: '1234567',
       loading: false
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
       this.props.navigation.navigate('Dashboard');
-    } else if (this.peops.error !== null) {
-      alert(this.peops.error);
     }
   }
 
@@ -56,7 +54,6 @@ class Login extends Component {
         if ('password' === name && value.length < 6) {
           errors[name] = 'Too short';
         } else {
-          // this.props.navigation.navigate('Dashboard');
           this.props.attemptLogin(this.state.email, this.state.password);
         }
       }

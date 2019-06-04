@@ -17,6 +17,7 @@ export function* loginUser(api, action) {
     AsyncStorage.setItem('@demo:user', JSON.stringify(user));
     yield put(AuthActions.loginSuccess(user));
   } else {
+    alert('Invalid credentials');
     yield put(AuthActions.loginFailure('Invalid credentials'));
   }
 }
