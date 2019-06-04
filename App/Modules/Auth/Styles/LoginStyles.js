@@ -1,11 +1,15 @@
 import { StyleSheet } from 'react-native';
-import { ApplicationStyles } from '../../../Themes';
+import { ApplicationStyles, Colors } from '../../../Themes';
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   buttomTextStyle: {
     paddingLeft: 20,
     paddingRight: 20,
-    color: 'white'
+    color: Colors.text
+  },
+  buttonStyle: {
+    alignSelf: 'center',
+    marginTop: 10
   }
 });

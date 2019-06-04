@@ -68,14 +68,7 @@ class Login extends Component {
     let { email, password, errors = {} } = this.state;
 
     return (
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{
-          padding: 10,
-          flex: 1
-        }}
-        keyboardShouldPersistTaps="handled"
-      >
+      <ScrollView keyboardShouldPersistTaps="handled">
         <View style={styles.mainContainer}>
           <TextField
             ref={this.emailRef}
@@ -87,10 +80,10 @@ class Login extends Component {
             onChangeText={email => this.setState({ email })}
           />
           <TextField
+            secureTextEntry
             ref={this.passwordRef}
             label="Password"
             value={password}
-            secureTextEntry
             error={errors.password}
             onFocus={this.onFocus}
             onSubmitEditing={this.onSubmitPassword}
@@ -98,7 +91,7 @@ class Login extends Component {
           />
           <Button
             primary
-            style={{ alignSelf: 'center', marginTop: 10 }}
+            style={styles.buttonStyle}
             onPress={() => this.onSubmit()}
           >
             <Text style={styles.buttomTextStyle}>Login</Text>
