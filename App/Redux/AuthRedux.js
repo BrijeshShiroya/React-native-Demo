@@ -16,11 +16,13 @@ export default Creators;
 export const INITIAL_STATE = Immutable({
   fetching: false,
   error: null,
-  user: null
+  user: null,
+  isUserLoggedIn: false
 });
 
 export const clear = state =>
   state.merge({
+    isUserLoggedIn: false,
     fetching: false,
     error: null,
     user: null
@@ -35,13 +37,14 @@ export const userLoginRequest = state =>
 
 export const userLoginSuccess = (state, action) =>
   state.merge({
+    isUserLoggedIn: true,
     fetching: false,
     user: action.user,
     error: null
   });
 
 export const userLoginFailure = (state, { error }) =>
-  state.merge({ fetching: false, error });
+  state.merge({ fetching: false, error, isUserLoggedIn: false });
 
 /* ------------- Hookup Reducers To Types ------------- */
 

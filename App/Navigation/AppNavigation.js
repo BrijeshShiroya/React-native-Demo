@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   createStackNavigator,
-  createAppContainer,
-  createBottomTabNavigator
+  createBottomTabNavigator,
+  createSwitchNavigator
 } from 'react-navigation';
 import { Login, Home, Videos, Setting } from 'Modules';
 // import Login from './Modules/Auth/Login';
@@ -47,13 +47,8 @@ const Tab = createBottomTabNavigator(
   }
 );
 
-const Root = createStackNavigator(
-  {
-    Login: {
-      screen: Login
-    },
-    Dashboard: Tab
-  },
+const LoginStack = createStackNavigator(
+  { Login },
   {
     // Default config for all screens
     headerMode: 'none',
@@ -61,4 +56,28 @@ const Root = createStackNavigator(
   }
 );
 
-export default createAppContainer(Root);
+// const Root = createStackNavigator(
+//   {
+//     Login: {
+//       screen: Login
+//     },
+//     Dashboard: Tab
+//   },
+//   {
+//     // Default config for all screens
+//     headerMode: 'none',
+//     initialRouteName: 'Login'
+//   }
+// );
+
+const Root = createSwitchNavigator(
+  {
+    Auth: LoginStack,
+    Tab
+  },
+  {
+    initialRouteName: 'Auth'
+  }
+);
+
+export default Root;

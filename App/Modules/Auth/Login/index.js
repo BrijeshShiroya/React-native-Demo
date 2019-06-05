@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import { TextField } from 'react-native-material-textfield';
@@ -12,7 +13,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'Admin@gmail.com',
+      email: 'admin@gmail.com',
       password: '123456'
     };
   }
@@ -20,7 +21,7 @@ class Login extends Component {
   componentDidUpdate(prevProps) {
     // eslint-disable-next-line react/prop-types
     if (this.props.user !== prevProps.user) {
-      this.props.navigation.navigate('Dashboard');
+      this.props.navigation.navigate('Tab');
     }
   }
 
@@ -127,3 +128,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Login);
+Login.propTypes = {
+  attemptLogin: PropTypes.func
+};

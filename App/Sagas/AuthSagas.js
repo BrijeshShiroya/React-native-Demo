@@ -4,7 +4,7 @@ import AuthActions from '../Redux/AuthRedux';
 export function* loginUser(api, action) {
   const { email, password } = action;
   if (
-    email.toLowerCase() === 'Admin@gmail.com'.toLowerCase() &&
+    email.toLowerCase() === 'admin@gmail.com'.toLowerCase() &&
     password === '123456'
   ) {
     let user = {
