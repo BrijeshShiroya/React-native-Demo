@@ -4,6 +4,7 @@ import { Button } from 'native-base';
 import { connect } from 'react-redux';
 import { TextField } from 'react-native-material-textfield';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Loader from '../../../Components/Loader';
 import styles from './style';
 import AuthActions from '../../../Redux/AuthRedux';
 import { emailVarification } from '../../../Services/UtilityFunctions';
@@ -11,19 +12,14 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
-      loading: false
+      email: 'Admin@gmail.com',
+      password: '123456'
     };
   }
 
   componentDidUpdate(prevProps) {
     // eslint-disable-next-line react/prop-types
-    if (!prevProps.error && this.props.error) {
-      // eslint-disable-next-line react/prop-types
-      alert(this.props.error);
-      // eslint-disable-next-line react/prop-types
-    } else if (this.props.user !== prevProps.user) {
+    if (this.props.user !== prevProps.user) {
       this.props.navigation.navigate('Dashboard');
     }
   }
@@ -107,6 +103,10 @@ class Login extends Component {
             <Text style={styles.buttomTextStyle}>Login</Text>
           </Button>
         </View>
+        {
+          // eslint-disable-next-line react/prop-types
+          <Loader isVisible={this.props.fetching} />
+        }
       </KeyboardAwareScrollView>
     );
   }

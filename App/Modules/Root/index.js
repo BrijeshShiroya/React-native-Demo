@@ -22,10 +22,7 @@ class RootContainer extends Component {
 
   render() {
     return (
-      <View
-        style={styles.applicationView}
-        forceInset={{ top: 'never', bottom: 'never' }}
-      >
+      <View style={styles.applicationView}>
         <StatusBar barStyle="light-content" />
         <ReduxNavigation />
       </View>

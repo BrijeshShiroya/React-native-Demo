@@ -21,7 +21,8 @@ export const INITIAL_STATE = Immutable({
 export const userLoginRequest = state =>
   state.merge({
     fetching: true,
-    error: null
+    error: null,
+    user: null
   });
 
 export const userLoginSuccess = (state, action) =>

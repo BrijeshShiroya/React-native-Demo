@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text, Image, View, FlatList } from 'react-native';
 import { Container, Header, Body } from 'native-base';
 import { connect } from 'react-redux';
+import Loader from '../../../Components/Loader';
 import VideoActions from '../../../Redux/VideoRedux';
 
 // Styles
@@ -61,6 +62,10 @@ class Videos extends Component {
           </Body>
         </Header>
         {this.renderVideoList()}
+        {
+          // eslint-disable-next-line react/prop-types
+          <Loader isVisible={this.props.fetching} />
+        }
       </Container>
     );
   }
