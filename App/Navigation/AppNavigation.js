@@ -12,9 +12,9 @@ import { Login, Home, Videos, Setting } from 'Modules';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../Themes';
 
-const TabIcon = props => (
-  <Icon name={props.name} size={20} color={Colors.primary} />
-);
+function renderTabIcon(name) {
+  return <Icon name={name} size={20} color={Colors.primary} />;
+}
 
 const Tab = createBottomTabNavigator(
   {
@@ -22,21 +22,21 @@ const Tab = createBottomTabNavigator(
       screen: Home,
       navigationOptions: {
         gesturesEnabled: false,
-        tabBarIcon: <TabIcon name={'home'} />
+        tabBarIcon: renderTabIcon('home')
       }
     },
     Videos: {
       screen: Videos,
       navigationOptions: {
         gesturesEnabled: false,
-        tabBarIcon: <TabIcon name={'list'} />
+        tabBarIcon: renderTabIcon('list')
       }
     },
     Setting: {
       screen: Setting,
       navigationOptions: {
         gesturesEnabled: false,
-        tabBarIcon: <TabIcon name={'cog'} />
+        tabBarIcon: renderTabIcon('cog')
       }
     }
   },

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, Image, View, FlatList } from 'react-native';
-import { Container, Header, Title, Body } from 'native-base';
+import { Container, Header, Body } from 'native-base';
 import { connect } from 'react-redux';
 import VideoActions from '../../../Redux/VideoRedux';
 
@@ -57,7 +57,7 @@ class Videos extends Component {
       <Container style={styles.mainContainer}>
         <Header>
           <Body>
-            <Title>{`Videos`}</Title>
+            <Text>{'Videos'}</Text>
           </Body>
         </Header>
         {this.renderVideoList()}

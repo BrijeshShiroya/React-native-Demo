@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Dimensions, AsyncStorage } from 'react-native';
+import { Dimensions } from 'react-native';
 import { Provider } from 'react-redux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import '../Config';
 import DebugConfig from '../Config/DebugConfig';
 import RootContainer from './Root';
 import createStore from '../Redux';
-import AuthActions from '../Redux/AuthRedux';
 
 // create our store
 const store = createStore();

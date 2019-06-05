@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Alert, AsyncStorage } from 'react-native';
 import { alerts } from 'Constants';
-import { Container, Header, Title, Body, Button } from 'native-base';
+import { Container, Header, Body, Button } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
 // Styles
 import styles from './style';
@@ -40,7 +40,7 @@ export default class Setting extends Component {
       <Container style={styles.mainContainer}>
         <Header>
           <Body>
-            <Title>{`Setting`}</Title>
+            <Text>{'Setting'}</Text>
           </Body>
         </Header>
         <View style={styles.container}>

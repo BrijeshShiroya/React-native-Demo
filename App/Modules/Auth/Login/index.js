@@ -11,15 +11,18 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'Admin@gmail.com1',
-      password: '123456',
+      email: 'eve.holt@reqres.in',
+      password: 'cityslicka',
       loading: false
     };
   }
 
   componentDidUpdate(prevProps) {
+    // eslint-disable-next-line react/prop-types
     if (!prevProps.error && this.props.error) {
+      // eslint-disable-next-line react/prop-types
       alert(this.props.error);
+      // eslint-disable-next-line react/prop-types
     } else if (this.props.user !== prevProps.user) {
       this.props.navigation.navigate('Dashboard');
     }
@@ -60,6 +63,7 @@ class Login extends Component {
     });
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
+      // eslint-disable-next-line react/prop-types
       this.props.attemptLogin(this.state.email, this.state.password);
     }
   }
