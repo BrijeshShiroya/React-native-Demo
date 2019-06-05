@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, Image, View, FlatList } from 'react-native';
 import { Container } from 'native-base';
 import { connect } from 'react-redux';
 import Loader from '../../../Components/Loader';
+import EmptyList from '../../../Components/EmptyList';
 import VideoActions from '../../../Redux/VideoRedux';
 
 // Styles
@@ -50,6 +51,7 @@ class Videos extends Component {
         data={this.state.videos}
         renderItem={this._renderItem}
         extraData={this.state}
+        ListEmptyComponent={<EmptyList title={'No Video'} />}
       />
     );
   }

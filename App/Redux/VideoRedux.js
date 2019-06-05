@@ -20,7 +20,8 @@ export const INITIAL_STATE = Immutable({
 
 export const videoRequest = state =>
   state.merge({
-    fetching: true
+    fetching: true,
+    videos: []
   });
 
 export const videoSuccess = (state, action) =>
@@ -30,7 +31,7 @@ export const videoSuccess = (state, action) =>
   });
 
 export const videoFailure = (state, { error }) =>
-  state.merge({ fetching: false, error });
+  state.merge({ fetching: false, error, videos: [] });
 
 /* ------------- Hookup Reducers To Types ------------- */
 
