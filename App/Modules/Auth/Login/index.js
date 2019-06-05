@@ -11,14 +11,16 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'Admin@gmail.com1',
+      password: '123456',
       loading: false
     };
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.user !== prevProps.user) {
+    if (!prevProps.error && this.props.error) {
+      alert(this.props.error);
+    } else if (this.props.user !== prevProps.user) {
       this.props.navigation.navigate('Dashboard');
     }
   }

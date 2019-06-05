@@ -1,7 +1,7 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce';
 
-const productionUrl = 'https://private-c31a5-task27.apiary-mock.com/';
+const productionUrl = 'https://reqres.in/api/'; //'https://private-c31a5-task27.apiary-mock.com/';
 
 // our "constructor"
 const create = (baseURL = productionUrl) => {
@@ -38,6 +38,7 @@ const create = (baseURL = productionUrl) => {
   //
   const getRoot = () => api.get('');
   const getVideos = () => api.get('videos');
+  const userLogin = (email, password) => api.post('login', { email, password });
   const getUser = username => api.get('search/users', { q: username });
 
   // ------
@@ -56,7 +57,8 @@ const create = (baseURL = productionUrl) => {
     // a list of the API functions from step 2
     getRoot,
     getVideos,
-    getUser
+    getUser,
+    userLogin
   };
 };
 
