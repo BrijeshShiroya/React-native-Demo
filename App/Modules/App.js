@@ -22,15 +22,6 @@ EStyleSheet.build({ $rem: entireScreenWidth / 380 });
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends Component {
-  // componentDidMount() {
-  //   AsyncStorage.getItem('@demo:user', (err, result) => {
-  //     if (err) {
-  //       /* eslint-disable-next-line no-console */
-  //     }
-  //     // this.setState({ loading: true }, () => store.dispatch(AuthActions.userLoginSuccess())
-  //   });
-  // }
-
   render() {
     return (
       <Provider store={store}>
