@@ -5,7 +5,11 @@ import rootSaga from '../Sagas/';
 import ReduxPersist from '../Config/ReduxPersist';
 import { videoReducer } from '../Redux/VideoRedux';
 import { authReducer } from '../Redux/AuthRedux';
-
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage: AsyncStorage,
+//   blacklist: ['user'],
+// };
 /* ------------- Assemble The Reducers ------------- */
 export const reducers = combineReducers({
   nav: require('./NavigationRedux').reducer,
@@ -13,6 +17,7 @@ export const reducers = combineReducers({
   search: require('./SearchRedux').reducer,
   video: videoReducer,
   auth: authReducer
+  // auth: persistReducer(authPersistConfig, authReducer)
 });
 
 export default () => {

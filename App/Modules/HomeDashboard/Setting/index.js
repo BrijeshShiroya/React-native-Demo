@@ -1,48 +1,33 @@
 import React, { Component } from 'react';
-import { Text, View, Alert, AsyncStorage } from 'react-native';
+import { Text, View } from 'react-native';
 import { alerts } from 'Constants';
-import { Container, Header, Body, Button } from 'native-base';
+import { Container, Button } from 'native-base';
 import { StackActions, NavigationActions } from 'react-navigation';
+import { showConfirmationAlert } from '../../../Services/UtilityFunctions';
+import AuthActions from '../../../Redux/AuthRedux';
+import { connect } from 'react-redux';
+
 // Styles
 import styles from './style';
 
-export default class Setting extends Component {
+class Setting extends Component {
   onLogoutClick() {
-    Alert.alert(
-      'Simform',
-      alerts.logout,
-      [
-        {
-          text: 'Cancel',
-          onPress: () => {}
-        },
-        {
-          text: 'Ok',
-          onPress: () => {
-            AsyncStorage.removeItem('@demo:user').then(() => {
-              this.props.navigation.dispatch(
-                StackActions.reset({
-                  key: null,
-                  index: 0,
-                  actions: [NavigationActions.navigate({ routeName: 'Login' })]
-                })
-              );
-            });
-          }
-        }
-      ],
-      { cancelable: false }
-    );
+    showConfirmationAlert(alerts.logout, 'Logout', 'Cancel', () => {
+      // eslint-disable-next-line react/prop-types
+      this.props.clearData();
+      this.props.navigation.dispatch(
+        StackActions.reset({
+          key: null,
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: 'Login' })]
+        })
+      );
+    });
   }
 
   render() {
     return (
       <Container style={styles.mainContainer}>
-        <Header>
-          <Body>
-            <Text>{'Setting'}</Text>
-          </Body>
-        </Header>
         <View style={styles.container}>
           <Button
             primary
@@ -56,3 +41,12 @@ export default class Setting extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  clearData: () => dispatch(AuthActions.clearAll())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Setting);

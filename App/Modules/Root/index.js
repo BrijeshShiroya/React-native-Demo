@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, StatusBar } from 'react-native';
+import { StatusBar, AsyncStorage, SafeAreaView } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
+import { Root } from 'native-base';
 import ReduxNavigation from '../../Navigation/ReduxNavigation';
 import StartupActions from '../../Redux/StartupRedux';
-import AuthActions from '../../Redux/AuthRedux';
+// import AuthActions from '../../Redux/AuthRedux';
 import ReduxPersist from '../../Config/ReduxPersist';
-import store from '../../Redux';
 
 // Styles
 import styles from './style';
 
 class RootContainer extends Component {
-  handleNavigation(result) {
-    const res = JSON.parse(result);
-    store.dispatch(AuthActions.loginSuccess(res));
-    store.dispatch(NavigationActions.navigate({ routeName: 'Tab', index: 0 }));
-    setTimeout(() => SplashScreen.hide(), 1000);
-  }
   componentDidMount() {
     console.disableYellowBox = true;
-    // AsyncStorage.getItem('@demo:user', (err, result) => {
-    //   if (result) {
-    //     this.setState({ loading: true }, () => this.handleNavigation(result));
-    //   }
-    // });
+    AsyncStorage.getItem('@demo:user', (err, result) => {
+      if (result) {
+        // store.dispatch(
+        //   NavigationActions.navigate({ routeName: 'Tab', index: 0 })
+        // );
+      }
+    });
     // if redux persist is not active fire startup action
+    SplashScreen.hide();
     if (!ReduxPersist.active) {
       this.props.startup();
     }
@@ -35,10 +31,15 @@ class RootContainer extends Component {
 
   render() {
     return (
-      <View style={styles.applicationView}>
+      <SafeAreaView
+        style={styles.applicationView}
+        forceInset={{ top: 'never', bottom: 'never' }}
+      >
         <StatusBar barStyle="light-content" />
-        <ReduxNavigation />
-      </View>
+        <Root>
+          <ReduxNavigation />
+        </Root>
+      </SafeAreaView>
     );
   }
 }

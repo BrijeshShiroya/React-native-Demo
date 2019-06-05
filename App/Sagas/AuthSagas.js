@@ -1,6 +1,4 @@
 import { put } from 'redux-saga/effects';
-import { AsyncStorage } from 'react-native';
-
 import AuthActions from '../Redux/AuthRedux';
 
 export function* loginUser(api, action) {
@@ -14,7 +12,6 @@ export function* loginUser(api, action) {
       lastname: 'Solutions',
       email: email
     };
-    AsyncStorage.setItem('@demo:user', JSON.stringify(user));
     yield put(AuthActions.loginSuccess(user));
   } else {
     alert('Invalid credentials');

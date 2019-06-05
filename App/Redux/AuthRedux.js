@@ -3,6 +3,7 @@ import Immutable from 'seamless-immutable';
 /* ----------- Type and Action Creators ---------------*/
 
 const { Types, Creators } = createActions({
+  clearAll: [],
   loginRequest: ['email', 'password'],
   loginSuccess: ['user'],
   loginFailure: ['error']
@@ -17,6 +18,13 @@ export const INITIAL_STATE = Immutable({
   error: null,
   user: null
 });
+
+export const clear = state =>
+  state.merge({
+    fetching: false,
+    error: null,
+    user: null
+  });
 
 export const userLoginRequest = state =>
   state.merge({
@@ -40,5 +48,6 @@ export const userLoginFailure = (state, { error }) =>
 export const authReducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_REQUEST]: userLoginRequest,
   [Types.LOGIN_SUCCESS]: userLoginSuccess,
-  [Types.LOGIN_FAILURE]: userLoginFailure
+  [Types.LOGIN_FAILURE]: userLoginFailure,
+  [Types.CLEAR_ALL]: clear
 });

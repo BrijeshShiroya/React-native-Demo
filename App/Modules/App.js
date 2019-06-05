@@ -22,10 +22,16 @@ EStyleSheet.build({ $rem: entireScreenWidth / 380 });
  * We separate like this to play nice with React Native's hot reloading.
  */
 class App extends Component {
+  componentDidMount() {
+    console.disableYellowBox = true;
+  }
+
   render() {
     return (
       <Provider store={store}>
+        {/* <PersistGate loading={null} persistor={store}> */}
         <RootContainer />
+        {/* </PersistGate> */}
       </Provider>
     );
   }

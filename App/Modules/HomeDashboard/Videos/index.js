@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, Image, View, FlatList } from 'react-native';
-import { Container, Header, Body } from 'native-base';
+import { Container } from 'native-base';
 import { connect } from 'react-redux';
 import Loader from '../../../Components/Loader';
 import VideoActions from '../../../Redux/VideoRedux';
@@ -56,11 +56,6 @@ class Videos extends Component {
   render() {
     return (
       <Container style={styles.mainContainer}>
-        <Header>
-          <Body>
-            <Text>{'Videos'}</Text>
-          </Body>
-        </Header>
         {this.renderVideoList()}
         {
           // eslint-disable-next-line react/prop-types

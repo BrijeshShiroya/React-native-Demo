@@ -46,6 +46,7 @@ const Tab = createBottomTabNavigator(
     }
   }
 );
+
 const Root = createStackNavigator(
   {
     Login: {
