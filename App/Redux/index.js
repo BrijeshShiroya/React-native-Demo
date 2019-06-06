@@ -5,6 +5,7 @@ import rootSaga from '../Sagas/';
 import ReduxPersist from '../Config/ReduxPersist';
 import { videoReducer } from '../Redux/VideoRedux';
 import { authReducer } from '../Redux/AuthRedux';
+import { questionReducer } from '../Redux/QuestionRedux';
 // const authPersistConfig = {
 //   key: 'auth',
 //   storage: AsyncStorage,
@@ -16,7 +17,8 @@ export const reducers = combineReducers({
   github: require('./GithubRedux').reducer,
   search: require('./SearchRedux').reducer,
   video: videoReducer,
-  auth: authReducer
+  auth: authReducer,
+  question: questionReducer
   // auth: persistReducer(authPersistConfig, authReducer)
 });
 
